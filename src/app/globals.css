@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    line-height: 1.5;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  /* Dark mode scrollbar */
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(26, 115, 232, 0.3);
+    color: inherit;
+  }
+}
+
+@layer components {
+  /* Google-style buttons */
+  .btn-google {
+    @apply inline-flex items-center px-6 py-2 bg-google-blue text-white rounded-md;
+    @apply hover:bg-google-blue-hover focus:outline-none focus:ring-2 focus:ring-google-blue focus:ring-opacity-50;
+    @apply transition-all duration-200 font-medium text-sm;
+  }
+  
+  .btn-google-outline {
+    @apply inline-flex items-center px-6 py-2 border border-google-gray text-google-gray rounded-md;
+    @apply hover:bg-google-gray-hover focus:outline-none focus:ring-2 focus:ring-google-blue focus:ring-opacity-50;
+    @apply transition-all duration-200 font-medium text-sm;
+  }
+
+  /* Google-style cards */
+  .card-google {
+    @apply bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700;
+    @apply hover:shadow-google-lg transition-shadow duration-200;
+  }
+
+  /* Google-style inputs */
+  .input-google {
+    @apply w-full px-4 py-3 border border-neutral-300 dark:border-neutral-600 rounded-lg;
+    @apply focus:ring-2 focus:ring-google-blue focus:border-transparent;
+    @apply bg-white dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100;
+    @apply transition-all duration-200;
+  }
+
+  /* Video card hover effects */
+  .video-card-hover {
+    @apply transition-all duration-300 hover:shadow-google-lg hover:-translate-y-1;
+  }
+
+  /* Category chips Google-style */
+  .category-chip {
+    @apply inline-flex items-center px-4 py-2 bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-600 rounded-full;
+    @apply text-sm font-medium text-neutral-700 dark:text-neutral-300;
+    @apply hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors duration-200;
+  }
+  
+  .category-chip.active {
+    @apply bg-google-blue text-white border-google-blue;
+  }
+
+  /* Google News-style layout */
+  .news-layout {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .news-section {
+    @apply border-b border-neutral-200 dark:border-neutral-700 pb-8 mb-8 last:border-b-0;
+  }
+
+  .news-main-story {
+    @apply col-span-1 lg:col-span-1;
+  }
+
+  .news-secondary-stories {
+    @apply col-span-1 lg:col-span-2 space-y-4;
+  }
+
+  /* Loading states */
+  .skeleton {
+    @apply animate-pulse bg-neutral-200 dark:bg-neutral-700 rounded;
+  }
+}
+
+@layer utilities {
+  .text-google-headline {
+    @apply text-google-headline font-normal text-neutral-900 dark:text-neutral-100;
+  }
+
+  .text-google-subhead {
+    @apply text-google-subhead font-normal text-neutral-700 dark:text-neutral-300;
+  }
+
+  .text-google-body {
+    @apply text-google-body font-normal text-neutral-600 dark:text-neutral-400;
+  }
+
+  .text-google-caption {
+    @apply text-google-caption font-normal text-neutral-500 dark:text-neutral-500;
+  }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
