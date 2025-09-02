@@ -1,9 +1,11 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { Category } from '@/types';
 import { useStore } from '@/store/useStore';
-import clsx from 'clsx';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 interface CategoryChipsProps {
   categories: Category[];
@@ -29,23 +31,25 @@ export function CategoryChips({
   };
 
   return (
-    <div className={clsx('border-b border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900', className)}>
-      <div className="news-layout">
-        <div className="flex space-x-1 overflow-x-auto scrollbar-hide py-3">
-          {categories.map((category) => (
-            <button
+    <div className={cn('bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800', className)}>
+      <div className="container-main">
+        <div className="flex space-x-3 overflow-x-auto scrollbar-hide py-6">
+          {categories.map((category, index) => (
+            <motion.div
               key={category.id}
-              onClick={() => handleCategoryClick(category)}
-              className={clsx(
-                'category-chip whitespace-nowrap',
-                activeCategory === category.slug && 'active'
-              )}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
             >
-              <span className="flex items-center space-x-1">
-                {category.icon && <span className="text-sm">{category.icon}</span>}
-                <span>{category.name}</span>
-              </span>
-            </button>
+              <Button
+                variant={activeCategory === category.slug ? "default" : "secondary"}
+                onClick={() => handleCategoryClick(category)}
+                className="whitespace-nowrap flex items-center space-x-2 h-12 px-6"
+              >
+                {category.icon && <span className="text-lg">{category.icon}</span>}
+                <span className="font-medium">{category.name}</span>
+              </Button>
+            </motion.div>
           ))}
         </div>
       </div>
