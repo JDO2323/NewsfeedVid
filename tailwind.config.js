@@ -9,81 +9,78 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Google colors
+        // Google News palette
         google: {
           blue: '#1a73e8',
-          'blue-light': '#4285f4',
           'blue-hover': '#1557b0',
-          red: '#ea4335',
-          yellow: '#fbbc04',
-          green: '#34a853',
-          gray: '#5f6368',
-          'gray-light': '#9aa0a6',
-          'gray-dark': '#3c4043',
-          'gray-bg': '#f8f9fa',
-          'gray-hover': '#f1f3f4',
+          'blue-light': '#e8f0fe',
+          gray: {
+            50: '#f8f9fa',
+            100: '#f1f3f4',
+            200: '#e8eaed',
+            300: '#dadce0',
+            400: '#bdc1c6',
+            500: '#9aa0a6',
+            600: '#80868b',
+            700: '#5f6368',
+            800: '#3c4043',
+            900: '#202124',
+          }
         },
-        // Neutral system
-        neutral: {
-          25: '#fcfcfd',
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
-        },
-        // Primary system
-        primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
-          950: '#172554',
-        },
+        // Dark mode colors
+        dark: {
+          bg: '#1a1a1a',
+          surface: '#2d2d2d',
+          border: '#3f3f3f',
+          text: {
+            primary: '#e8eaed',
+            secondary: '#9aa0a6',
+          }
+        }
       },
       fontFamily: {
-        sans: ['Google Sans', 'Roboto', 'Arial', 'sans-serif'],
-        display: ['Google Sans Display', 'Roboto', 'sans-serif'],
+        sans: ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'google-headline': ['22px', { lineHeight: '28px', fontWeight: '400' }],
-        'google-subhead': ['16px', { lineHeight: '24px', fontWeight: '400' }],
-        'google-body': ['14px', { lineHeight: '20px', fontWeight: '400' }],
-        'google-caption': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+        'xs': '0.75rem',
+        'sm': '0.875rem',
+        'base': '1rem',
+        'lg': '1.125rem',
+        'xl': '1.25rem',
+        '2xl': '1.5rem',
+        '3xl': '1.875rem',
+        '4xl': '2.25rem',
       },
       spacing: {
         '18': '4.5rem',
         '88': '22rem',
       },
+      boxShadow: {
+        'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'google': '0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)',
+        'google-lg': '0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)',
+      },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-in-out',
-        'scale-in': 'scaleIn 0.2s ease-out',
+        'slide-up': 'slideUp 0.3s ease-out',
+        'skeleton': 'skeleton 1.2s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
-        scaleIn: {
-          '0%': { opacity: '0', transform: 'scale(0.95)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-      },
-      boxShadow: {
-        'google': '0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)',
-        'google-lg': '0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15)',
+        skeleton: {
+          '0%': { backgroundColor: '#f1f3f4' },
+          '50%': { backgroundColor: '#e8eaed' },
+          '100%': { backgroundColor: '#f1f3f4' },
+        },
       },
     },
   },

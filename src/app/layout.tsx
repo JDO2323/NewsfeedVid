@@ -1,7 +1,5 @@
 import { Inter } from 'next/font/google';
-import { Header } from '@/components/Header';
-import { MainNavigation } from '@/components/Navigation/MainNavigation';
-import { QuickActions } from '@/components/Navigation/QuickActions';
+import { Header } from '@/components/Layout/Header';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
 
@@ -12,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'Video Actus - Actualités Vidéo',
-  description: 'Toute l\'actualité française en vidéo. Comme Google Actualités, mais pour les vidéos.',
+  title: 'NewsfeedVid - Actualités en Vidéo',
+  description: 'Toute l\'actualité mondiale en vidéo. Interface moderne inspirée de Google Actualités.',
 };
 
 export default function RootLayout({
@@ -25,17 +23,11 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider>
-          <div className="min-h-screen bg-white dark:bg-neutral-900 transition-colors duration-300">
+          <div className="min-h-screen bg-white dark:bg-dark-bg transition-colors duration-300">
             <Header />
-            <div className="flex">
-              <MainNavigation />
-              <div className="flex-1 lg:ml-0">
-                <QuickActions />
             <main>
               {children}
             </main>
-              </div>
-            </div>
           </div>
         </ThemeProvider>
       </body>
