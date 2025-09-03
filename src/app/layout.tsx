@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'NewsfeedVid - L\'actualité mondiale en vidéo',
-  description: 'Découvrez les dernières actualités du monde entier en format vidéo. Une expérience moderne et immersive pour rester informé.',
+  title: 'NewsfeedVid',
+  description: 'Fresh videos, global perspectives - L\'actualité mondiale en vidéo',
 };
 
 export default function RootLayout({
@@ -21,14 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-gray-50 dark:bg-gray-900`}>
         <ThemeProvider>
-          <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-            <Header />
-            <main>
-              {children}
-            </main>
-          </div>
+          <Header />
+          {children}
         </ThemeProvider>
       </body>
     </html>
