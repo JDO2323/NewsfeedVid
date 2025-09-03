@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react';
 import { Video, Category } from '@/types';
 import { CategoryNavigation } from '@/components/CategoryNavigation';
-import { NewsSection } from '@/components/NewsSection';
+import { NetflixHero } from '@/components/NetflixHero';
+import { NetflixGrid } from '@/components/NetflixGrid';
+import { NetflixRow } from '@/components/NetflixRow';
 import { useStore } from '@/store/useStore';
 
 export default function HomePage() {
@@ -55,36 +57,33 @@ export default function HomePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen bg-white dark:bg-gray-900">
         <CategoryNavigation />
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="space-y-20">
-            {/* Loading skeletons */}
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="space-y-8">
-                <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-64 animate-pulse" />
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                  <div className="lg:col-span-2">
-                    <div className="aspect-video bg-gray-200 dark:bg-gray-700 rounded-2xl animate-pulse" />
-                    <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mt-4 w-3/4 animate-pulse" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    {[1, 2, 3, 4].map((j) => (
-                      <div key={j}>
-                        <div className="aspect-video bg-gray-200 dark:bg-gray-700 rounded-2xl animate-pulse" />
-                        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mt-3 animate-pulse" />
-                      </div>
-                    ))}
-                  </div>
+        <div className="px-4 md:px-8 py-8">
+          {/* Hero skeleton */}
+          <div className="h-[60vh] md:h-[70vh] bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 rounded-lg animate-pulse mb-12" />
+          
+          {/* Row skeletons */}
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="mb-12">
+              <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-64 mb-6 animate-pulse" />
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+                <div className="lg:col-span-3 aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
+                <div className="lg:col-span-2 grid grid-cols-2 gap-3">
+                  {[1, 2, 3, 4].map((j) => (
+                    <div key={j} className="aspect-video bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
+  const heroVideo = videos.find(v => v.views > 500000) || videos[0];
+  
   const sections = [
     {
       title: 'À la une',
@@ -114,21 +113,42 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <CategoryNavigation />
       
-      <main className="max-w-7xl mx-auto px-6 py-16">
-        <div className="space-y-20">
-          {sections.map((section, index) => (
+      {/* Netflix Hero Banner */}
+      {heroVideo && (
+        <NetflixHero video={heroVideo} />
+      )}
+      
+      {/* Content sections */}
+      <main className="relative z-10 -mt-32 pt-32">
+        <div className="space-y-8 md:space-y-12">
+          {/* Main content grids */}
+          {sections.map((section, index) => 
             section.videos.length > 0 && (
-              <NewsSection
+              <NetflixGrid
                 key={section.title}
                 title={section.title}
                 videos={section.videos}
                 categorySlug={section.categorySlug}
               />
             )
-          ))}
+          )}
+
+          {/* Additional trending rows */}
+          <NetflixRow
+            title="Tendances aujourd'hui"
+            videos={videos.filter(v => v.views > 100000).slice(0, 8)}
+            size="medium"
+            viewAllLink="/trending"
+          />
+
+          <NetflixRow
+            title="Continuer à regarder"
+            videos={videos.slice(10, 18)}
+            size="small"
+          />
         </div>
       </main>
     </div>

@@ -32,12 +32,12 @@ export function Header() {
           {/* Logo */}
           <button
             onClick={() => router.push('/')}
-            className="flex items-center space-x-3"
+            className="flex items-center space-x-3 z-50 relative"
           >
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 via-green-500 to-red-500 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-red-500 via-yellow-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg">
               <div className="w-0 h-0 border-l-[6px] border-l-white border-y-[4px] border-y-transparent ml-0.5" />
             </div>
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
+            <h1 className="text-2xl font-black text-gray-900 dark:text-white tracking-tight">
               NewsfeedVid
             </h1>
           </button>
